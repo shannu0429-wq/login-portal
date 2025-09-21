@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Portal</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0;">
+
+    <div style="width: 100%; max-width: 450px; background-color: #ffffff; padding: 25px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <h2 style="text-align: center; color: #28a745; border-bottom: 2px solid #28a745; padding-bottom: 10px;">
+            <span style="font-size: 1.2em; margin-right: 5px;">👦</span> Student Login
+        </h2>
+        
+        <div style="text-align: center; margin-bottom: 20px;">
+            <h3 id="welcomeMsg" style="margin-top: 0;">Welcome, <span id="userNamePlaceholder">Student</span>!</h3>
+            <p style="margin: 5px 0;"><strong>ID:</strong> <span id="userIDPlaceholder">N/A</span></p>
+        </div>
+
+        <ul style="list-style-type: none; padding: 0;">
+            <li style="background-color: #e6f9ed; border-left: 5px solid #28a745; padding: 15px; margin-bottom: 15px; border-radius: 5px;">
+                <a href="profile.html" style="text-decoration: none; color: #333; display: block;">Profile Information</a>
+            </li>
+            <li style="background-color: #e6f9ed; border-left: 5px solid #28a745; padding: 15px; margin-bottom: 15px; border-radius: 5px;">
+                <a href="offlineclasses.html" style="text-decoration: none; color: #333; display: block;">Offline Classes</a>
+            </li>
+            <li style="background-color: #e6f9ed; border-left: 5px solid #28a745; padding: 15px; margin-bottom: 15px; border-radius: 5px;">
+                <a href="dailyschedule.html" style="text-decoration: none; color: #333; display: block;">Daily Schedule 📅</a>
+            </li>
+            <li style="background-color: #e6f9ed; border-left: 5px solid #28a745; padding: 15px; margin-bottom: 15px; border-radius: 5px;">
+                <a href="attendance.html" style="text-decoration: none; color: #333; display: block;">Attendance</a>
+            </li>
+            <li style="background-color: #e6f9ed; border-left: 5px solid #28a745; padding: 15px; margin-bottom: 15px; border-radius: 5px;">
+                <a href="doubts.html" style="text-decoration: none; color: #333; display: block;">Drop box(Doubts)</a>
+            </li>
+            <li style="background-color: #e6f9ed; border-left: 5px solid #28a745; padding: 15px; margin-bottom: 15px; border-radius: 5px;">
+                <a href="studymaterials.html" style="text-decoration: none; color: #333; display: block;">Study Materials 📦</a>
+            </li>
+        </ul>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="logout()" style="background-color: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Logout</button>
+        </div>
+    </div>
+
+    <script>
+        const userId = localStorage.getItem("userID") || "N/A";
+        const userName = localStorage.getItem("userName") || "Student";
+
+        document.getElementById("userIDPlaceholder").innerText = userId;
+        document.getElementById("userNamePlaceholder").innerText = userName;
+
+      
+        function logout() {
+            localStorage.removeItem("userID");
+            localStorage.removeItem("userName");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>

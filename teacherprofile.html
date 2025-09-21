@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teacher Profile</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .profile-container { width: 100%; max-width: 600px; background-color: #ffffff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center; }
+        .profile-img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 3px solid #dc3545; }
+        .profile-details { text-align: left; margin: 0 auto; max-width: 400px; }
+        .profile-details p { margin: 10px 0; font-size: 1.1em; }
+        .profile-details strong { color: #c82333; }
+        .back-btn { text-decoration: none; background-color: #6c757d; color: white; padding: 10px 20px; border-radius: 5px; display: inline-block; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <h1 style="color: #dc3545;">Teacher Profile</h1>
+        <img id="teacherPhoto" src="" alt="Teacher Photo" class="profile-img">
+        
+        <div class="profile-details">
+            <p><strong>Name:</strong> <span id="teacherName"></span></p>
+            <p><strong>Teacher ID:</strong> <span id="teacherID"></span></p>
+            <p><strong>Department:</strong> Computer Science</p>
+            <p><strong>Joining Date:</strong> August 15, 2018</p>
+            <p><strong>About:</strong> A dedicated educator with a passion for teaching and student success.</p>
+        </div>
+        
+        <a href="teacher.html" class="back-btn">Go Back to Dashboard</a>
+    </div>
+
+    <script>
+        // Retrieve data from localStorage
+        const teacherName = localStorage.getItem("userName") || "N/A";
+        const teacherID = localStorage.getItem("userID") || "N/A";
+        const teacherImage = localStorage.getItem("userImage") || "placeholder.jpg"; // Default placeholder if no image is found
+
+        // Display the data on the page
+        document.getElementById("teacherName").innerText = teacherName;
+        document.getElementById("teacherID").innerText = teacherID;
+        document.getElementById("teacherPhoto").src = teacherImage;
+    </script>
+</body>
+</html>

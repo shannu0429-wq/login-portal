@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Portal</title>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      width: 350px;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    button {
+      width: 80%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .btn-student { background: #007bff; }
+    .btn-teacher { background: #28a745; }
+    .btn-student:hover { background: #0056b3; }
+    .btn-teacher:hover { background: #1e7e34; }
+    .page { display: none; }
+    .page.active { display: block; }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .back-btn {
+      background: #6c757d;
+      margin-top: 10px;
+    }
+    .back-btn:hover { background: #5a6268; }
+    
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+  
+    <!-- Page 1: Select Role -->
+    <div id="homePage" class="page active">
+        <h2>Gyaan Sarthi<br> A Digital Learning Companion for Nabha</h2>
+      <h2>WELCOME</h2>
+      <h2>Login Portal</h2>
+      <button class="btn-student" onclick="showPage('studentPage')">Student</button>
+      <button class="btn-teacher" onclick="showPage('teacherPage')">Teacher</button>
+    </div>
+
+    <!-- Page 2: Student Login -->
+    <div id="studentPage" class="page">
+      <h2>Student Login</h2>
+      <input type="text" id="studentID" placeholder="Student ID">
+      <input type="password" id="studentPass" placeholder="Password">
+      <button class="btn-student" onclick="studentLogin()">Login</button>
+      <button class="back-btn" onclick="showPage('homePage')">Back</button>
+    </div>
+
+    <!-- Page 3: Teacher Login -->
+    <div id="teacherPage" class="page">
+      <h2>Teacher Login</h2>
+      <input type="text" id="teacherID" placeholder="Teacher ID">
+      <input type="password" id="teacherPass" placeholder="Password">
+      <button class="btn-teacher" onclick="teacherLogin()">Login</button>
+      <button class="back-btn" onclick="showPage('homePage')">Back</button>
+    </div>
+    
+  </div>
+
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+    }
+
+    // Student ID → Name Mapping
+    const studentData = {
+      "24BQ1A053D": "Shanmukha ",
+      "24BQ1A053B": "Yafreed",
+      "24BQ1A053I": "Lalitha",
+      "24BQ1A052P": "Ruby ruksara",
+      "24BQ1A052J": "Nafeesa Begum",
+      "24BQ1A052R": "Sammera",
+      "24BQ1A05A5": "koushik",
+      "25BQ5A0513": "ganesh",
+      "24BQ1A054K": "Akhil"
+    };
+    
+    // Teacher ID → Name Mapping
+    const teacherData = {
+      "teacher123": "Prof. Ramesh",
+      "teacher456": "Dr. Kavita",
+      "teacher789": "Mr. Arvind"
+    };
+
+    // Student Login Validation
+    function studentLogin() {
+      let id = document.getElementById("studentID").value.trim();
+      let pass = document.getElementById("studentPass").value.trim();
+      
+      if (id === "" || pass === "") {
+        alert("⚠️ Please enter Student ID and Password");
+        return;
+      }
+
+      if (studentData[id] && pass === "12345") {
+        localStorage.setItem("userID", id);
+        localStorage.setItem("userName", studentData[id]);
+        localStorage.setItem("role", "student");
+        window.location.href = "student.html";
+      } else {
+        alert("❌ Incorrect Student ID or Password");
+      }
+    }
+
+    // Teacher Login Validation
+    function teacherLogin() {
+      let id = document.getElementById("teacherID").value.trim();
+      let pass = document.getElementById("teacherPass").value.trim();
+      
+      if (id === "" || pass === "") {
+        alert("⚠️ Please enter Teacher ID and Password");
+        return;
+      }
+
+      if (teacherData[id] && pass === "1") {
+        localStorage.setItem("userID", id);
+        localStorage.setItem("userName", teacherData[id]);
+        localStorage.setItem("role", "teacher");
+        window.location.href = "teacher.html";
+      } else {
+        alert("❌ Incorrect Teacher ID or Password");
+      }
+    }
+  </script>
+</body>
+</html>
