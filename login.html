@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Login Portal</title>
+  
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -52,13 +53,16 @@
       margin-top: 10px;
     }
     .back-btn:hover { background: #5a6268; }
+    
   </style>
 </head>
 <body>
+  
   <div class="container">
-    
+  
     <!-- Page 1: Select Role -->
     <div id="homePage" class="page active">
+        <h2>Gyaan Sarthi<br> A Digital Learning Companion for Nabha</h2>
       <h2>WELCOME</h2>
       <h2>Login Portal</h2>
       <button class="btn-student" onclick="showPage('studentPage')">Student</button>
@@ -93,7 +97,7 @@
 
     // Student ID → Name Mapping
     const studentData = {
-      "24BQ1A053D": "Shanmukha",
+      "24BQ1A053D": "Shanmukha ",
       "24BQ1A053B": "Yafreed",
       "24BQ1A053I": "Lalitha",
       "24BQ1A052P": "Ruby ruksara",
@@ -102,10 +106,8 @@
       "24BQ1A05A5": "koushik",
       "25BQ5A0513": "ganesh",
       "24BQ1A054K": "Akhil"
-      
-      
     };
-
+    
     // Teacher ID → Name Mapping
     const teacherData = {
       "teacher123": "Prof. Ramesh",
@@ -143,7 +145,7 @@
         return;
       }
 
-      if (teacherData[id] && pass === "54321") {
+      if (teacherData[id] && pass === "1") {
         localStorage.setItem("userID", id);
         localStorage.setItem("userName", teacherData[id]);
         localStorage.setItem("role", "teacher");
@@ -155,4 +157,3 @@
   </script>
 </body>
 </html>
-
